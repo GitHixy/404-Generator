@@ -24,6 +24,7 @@
 
 ## Author
 Developed by [GitHixy](https://github.com/GitHixy)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/02f9673b-3c5e-4774-ae97-e322bd9e638e/deploy-status)](https://app.netlify.com/projects/sparkly-donut-e8e68f/deploys)
 
 ---
