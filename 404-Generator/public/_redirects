@@ -1,0 +1,9 @@
+/*
+  Netlify _redirects file for SPA and custom 404
+  Redirect all routes to index.html except for static assets, and serve 404.html for not found
+*/
+
+/*    /index.html   200
+/404  /404.html    404
+/404.html  /404.html  404
+/*    /index.html   200!
