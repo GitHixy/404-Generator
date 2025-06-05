@@ -12,6 +12,7 @@ function App() {
   const [data, setData] = useState(default404Data);
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [showEmojiMenu, setShowEmojiMenu] = useState(false);
+  const [downloadReady, setDownloadReady] = useState(false);
   const emojiMenuRef = useRef(null);
   const emojiBtnRef = useRef(null);
   const colorRefs = {
@@ -56,6 +57,7 @@ function App() {
     const blob = new Blob([html], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     setDownloadUrl(url);
+    setDownloadReady(true);
     setTimeout(() => URL.revokeObjectURL(url), 10000);
   }
 
@@ -135,12 +137,17 @@ function App() {
             />
           </div>
         </div>
-        <button type="button" className="download-btn" onClick={handleDownload}>
-          Generate & Download
+        <button
+          type="button"
+          className="download-btn"
+          onClick={handleDownload}
+          disabled={downloadReady}
+        >
+          {downloadReady ? 'Download ready! Click the link below' : 'Generate & Download'}
         </button>
         {downloadUrl && (
           <a href={downloadUrl} download="404.html" className="download-link">
-            Click here if download does not start
+            Tap here to download 404.html
           </a>
         )}
       </form>
