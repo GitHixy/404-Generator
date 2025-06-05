@@ -23,7 +23,7 @@ function App() {
   // Close emoji menu on outside click
   useEffect(() => {
     if (!showEmojiMenu) return;
-    function handleClick(e) {
+    function handleModalClick(e) {
       if (
         emojiMenuRef.current &&
         !emojiMenuRef.current.contains(e.target) &&
@@ -33,8 +33,8 @@ function App() {
         setShowEmojiMenu(false);
       }
     }
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+    document.addEventListener('mousedown', handleModalClick);
+    return () => document.removeEventListener('mousedown', handleModalClick);
   }, [showEmojiMenu]);
 
   // Handle input changes
@@ -89,15 +89,6 @@ function App() {
             >
               {data.emoji}
             </button>
-            {showEmojiMenu && (
-              <div className="emoji-menu" ref={emojiMenuRef}>
-                {EMOJI_LIST.map((emoji, i) => (
-                  <button key={i} type="button" className="emoji-btn" onClick={() => handleEmojiSelect(emoji)}>
-                    {emoji}
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
         </div>
         <div className="input-row">
@@ -106,8 +97,8 @@ function App() {
             <input name="message" value={data.message} onChange={handleChange} className="input-message" />
           </div>
         </div>
-        <div className="input-row">
-          <div className="input-label">
+        <div className="input-row color-row">
+          <div className="input-label color-label">
             <span>Background</span>
             <input
               id="color-background"
@@ -119,7 +110,7 @@ function App() {
               ref={colorRefs.background}
             />
           </div>
-          <div className="input-label">
+          <div className="input-label color-label">
             <span>Text</span>
             <input
               id="color-text"
@@ -131,7 +122,7 @@ function App() {
               ref={colorRefs.text}
             />
           </div>
-          <div className="input-label">
+          <div className="input-label color-label">
             <span>Accent</span>
             <input
               id="color-accent"
@@ -145,7 +136,7 @@ function App() {
           </div>
         </div>
         <button type="button" className="download-btn" onClick={handleDownload}>
-          Generate & Download 404.html
+          Generate & Download
         </button>
         {downloadUrl && (
           <a href={downloadUrl} download="404.html" className="download-link">
@@ -153,6 +144,22 @@ function App() {
           </a>
         )}
       </form>
+      {/* Emoji Picker Modal */}
+      {showEmojiMenu && (
+        <div className="emoji-modal-overlay">
+          <div className="emoji-modal" ref={emojiMenuRef}>
+            <button className="emoji-modal-close" onClick={() => setShowEmojiMenu(false)}>&times;</button>
+            <div className="emoji-modal-title">Choose an emoji</div>
+            <div className="emoji-menu-modal-grid">
+              {EMOJI_LIST.map((emoji, i) => (
+                <button key={i} type="button" className="emoji-btn" onClick={() => handleEmojiSelect(emoji)}>
+                  {emoji}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
       <h2 className="preview-title">Live Preview</h2>
       <div className="preview-container">
         <Page404Preview data={data} />
