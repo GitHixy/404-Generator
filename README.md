@@ -2,7 +2,7 @@
 
 ---
 
-**[Try the Live App on Netlify](https://6841a09914b88d2a711b8f93--sparkly-donut-e8e68f.netlify.app)**
+**[Try the Live App on Netlify](https://404-generator.netlify.app)**
 
 ---
 
