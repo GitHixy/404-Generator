@@ -3,7 +3,7 @@
 ---
 
 **[Try the Live App on Netlify](https://404-generator.netlify.app)**
-
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O4O81NUMC7)
 ---
 
 404-Generator is a web application that allows you to create customizable 404 error pages for your website.
